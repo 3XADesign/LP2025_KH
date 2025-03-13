@@ -1,15 +1,12 @@
-function lanzarDados() {
-    let cantidad = document.getElementById('cantidad').value;
-    let caras = document.getElementById('caras').value;
-
-    fetch(`/lanzar/${cantidad}/${caras}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('resultados').innerText = "🎲 " + data.resultados.join(', ');
-        })
-        .catch(error => console.error('Error:', error));
-}
-function limpiarHistorialUI() {
-    limpiarHistorial();  // Borra los datos del almacenamiento local
-    document.getElementById('resultados').innerText = "Historial limpiado.";
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const savedResults = getSavedResults();
+    if (savedResults.length > 0) {
+        const diceContainer = document.getElementById('diceContainer');
+        const resultBox = document.getElementById('resultBox');
+        resultBox.textContent = `Resultados: ${savedResults.join(', ')}`;
+        savedResults.forEach(result => {
+            const dice = createDice(result);
+            diceContainer.appendChild(dice);
+        });
+    }
+});
