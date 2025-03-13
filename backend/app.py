@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify
 import random
 import os
 
-# Verificar la ruta del directorio actual
+#Verificar la ruta del directorio actual
 current_dir = os.path.dirname(__file__)
 templates_path = os.path.join(current_dir, "templates")
 
@@ -11,7 +11,7 @@ print(f"Ruta de templates: {templates_path}")
 
 app = Flask(__name__, template_folder=templates_path)
 
-# Función para lanzar los dados
+#Función para lanzar los dados
 def lanzar_dados(cantidad, caras):
     print(f"Lanzando {cantidad} dados de {caras} caras")
     resultados = [random.randint(1, caras) for _ in range(cantidad)]
@@ -29,6 +29,6 @@ def lanzar(cantidad, caras):
     resultados = lanzar_dados(cantidad, caras)
     return jsonify({'resultados': resultados})
 
-if __name__ == '__main__':
+if __name__ == 'main':
     print("Iniciando servidor Flask...")
     app.run(debug=True)

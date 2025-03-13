@@ -1,15 +1,27 @@
-function lanzarDados() {
-    let cantidad = document.getElementById('cantidad').value;
-    let caras = document.getElementById('caras').value;
+// main.js - Inicializa la escena y maneja eventos
 
-    fetch(`/lanzar/${cantidad}/${caras}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('resultados').innerText = "🎲 " + data.resultados.join(', ');
-        })
-        .catch(error => console.error('Error:', error));
+let scene, camera, renderer, dice;
+
+function init() {
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    
+    dice = new Dice(scene);
+    camera.position.z = 5;
+    animate();
 }
-function limpiarHistorialUI() {
-    limpiarHistorial();  // Borra los datos del almacenamiento local
-    document.getElementById('resultados').innerText = "Historial limpiado.";
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
 }
+
+function lanzarDados() {
+    dice.roll();
+}
+
+document.addEventListener("click", lanzarDados);
+window.onload = init;
