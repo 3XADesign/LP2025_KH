@@ -1,68 +1,27 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
 }
 
-.dado {
-    width: 150px;
-    height: 150px;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateX(0) rotateY(0);
-    animation: girar 3s infinite;
+button {
+    padding: 10px;
+    font-size: 16px;
     cursor: pointer;
-    transition: transform 0.5s;
 }
 
-.dado:hover {
-    transform: rotateX(360deg) rotateY(360deg);
+/* Bootstrap ya tiene clases para botones, puedes hacer esto */
+.btn-custom {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.cara {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background-color: #fff;
-    border: 2px solid #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-}
-
-.cara:nth-child(1) {
-    transform: rotateY(  0deg) translateZ(75px);
-}
-
-.cara:nth-child(2) {
-    transform: rotateY( 90deg) translateZ(75px);
-}
-
-.cara:nth-child(3) {
-    transform: rotateY(180deg) translateZ(75px);
-}
-
-.cara:nth-child(4) {
-    transform: rotateY(-90deg) translateZ(75px);
-}
-
-.cara:nth-child(5) {
-    transform: rotateX( 90deg) translateZ(75px);
-}
-
-.cara:nth-child(6) {
-    transform: rotateX(-90deg) translateZ(75px);
-}
-
-@keyframes girar {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg);
-    }
-    100% {
-        transform: rotateX(360deg) rotateY(360deg);
-    }
+#resultados {
+    font-size: 20px;
+    margin-top: 20px;
 }

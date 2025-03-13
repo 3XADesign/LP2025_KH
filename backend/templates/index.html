@@ -3,32 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dado 3D Interactivo</title>
-    <link rel="stylesheet" href="dado.css">
+    <title>Simulador de Dados</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <!-- Bootstrap JS (opcional) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
-<body>
-    <div class="dado" onclick="tirarDado()">
-        <div class="cara">1</div>
-        <div class="cara">2</div>
-        <div class="cara">3</div>
-        <div class="cara">4</div>
-        <div class="cara">5</div>
-        <div class="cara">6</div>
+<body class="container text-center mt-5">
+
+    <h1 class="text-primary">🎲 Simulador de Dados</h1>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4">
+            <label for="cantidad" class="form-label">Cantidad de Dados:</label>
+            <input type="number" id="cantidad" class="form-control text-center" value="1" min="1">
+        </div>
+        
+        <div class="col-md-4">
+            <label for="caras" class="form-label">Caras del Dado:</label>
+            <select id="caras" class="form-select">
+                <option value="6">6</option>
+            </select>
+        </div>
     </div>
 
-    <script>
-        function tirarDado() {
-            let dado = document.querySelector('.dado');
-            let valor = Math.floor(Math.random() * 6) + 1;
-            dado.querySelectorAll('.cara').forEach((cara, index) => {
-                if (index + 1 === valor) {
-                    cara.innerHTML = valor;
-                } else {
-                    cara.innerHTML = '';
-                }
-            });
-            dado.style.transform = `rotateX(${Math.random() * 360}deg) rotateY(${Math.random() * 360}deg)`;
-        }
-    </script>
+    <div class="mt-3">
+        <button class="btn btn-success me-2" onclick="lanzarDados()">Lanzar Dados</button>
+        <button class="btn btn-danger" onclick="limpiarHistorialUI()">Limpiar Historial</button>
+    </div>
+
+    <h2 class="mt-4">Resultados:</h2>
+    <div id="resultados" class="alert alert-info mt-2"></div>
+
 </body>
 </html>

@@ -1,18 +1,15 @@
-function tirarDado() {
-    let dado = document.querySelector('.dado');
-    let valor = Math.floor(Math.random() * 6) + 1;
-    dado.querySelectorAll('.cara').forEach((cara, index) => {
-        if (index + 1 === valor) {
-            cara.innerHTML = valor;
-        } else {
-            cara.innerHTML = '';
-        }
-    });
-    dado.style.transform = `rotateX(${Math.random() * 360}deg) rotateY(${Math.random() * 360}deg)`;
-}
+function lanzarDados() {
+    let cantidad = document.getElementById('cantidad').value;
+    let caras = document.getElementById('caras').value;
 
-// Asegurarse de que el evento se asocie correctamente cuando la página cargue
-document.addEventListener('DOMContentLoaded', function() {
-    const dado = document.querySelector('.dado');
-    dado.addEventListener('click', tirarDado);
-});
+    fetch(`/lanzar/${cantidad}/${caras}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('resultados').innerText = "🎲 " + data.resultados.join(', ');
+        })
+        .catch(error => console.error('Error:', error));
+}
+function limpiarHistorialUI() {
+    limpiarHistorial();  // Borra los datos del almacenamiento local
+    document.getElementById('resultados').innerText = "Historial limpiado.";
+}
