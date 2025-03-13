@@ -1,7 +1,7 @@
 function lanzarDadosLocalmente(cantidad, caras) {
     let resultados = [];
     for (let i = 0; i < cantidad; i++) {
-        resultados.push(Math.floor(Math.random() * caras) + 1);
+        resultados.push(Math.floor(Math.random() * caras) + 2);
     }
     return resultados;
 }

@@ -17,6 +17,64 @@
 
     <h1 class="text-primary">🎲 Simulador de Dados</h1>
 
+    <!-- Contenedor del dado 3D -->
+    <!-- Contenedor del dado 3D -->
+    <div class="dado-3d">
+        <!-- Cara frontal -->
+        <div id="cara-frente" class="cara frente">
+            <div class="punto centro" id="frente-p1"></div>
+            <div class="punto esquina superior-izquierda" id="frente-p2"></div>
+            <div class="punto esquina superior-derecha" id="frente-p3"></div>
+            <div class="punto esquina inferior-izquierda" id="frente-p4"></div>
+            <div class="punto esquina inferior-derecha" id="frente-p5"></div>
+        </div>
+    
+        <!-- Cara trasera -->
+        <div id="cara-atras" class="cara atras">
+            <div class="punto centro" id="atras-p1"></div>
+            <div class="punto esquina superior-izquierda" id="atras-p2"></div>
+            <div class="punto esquina superior-derecha" id="atras-p3"></div>
+            <div class="punto esquina inferior-izquierda" id="atras-p4"></div>
+            <div class="punto esquina inferior-derecha" id="atras-p5"></div>
+        </div>
+    
+        <!-- Cara izquierda -->
+        <div id="cara-izquierda" class="cara izquierda">
+            <div class="punto centro" id="izquierda-p1"></div>
+            <div class="punto esquina superior-izquierda" id="izquierda-p2"></div>
+            <div class="punto esquina superior-derecha" id="izquierda-p3"></div>
+            <div class="punto esquina inferior-izquierda" id="izquierda-p4"></div>
+            <div class="punto esquina inferior-derecha" id="izquierda-p5"></div>
+        </div>
+    
+        <!-- Cara derecha -->
+        <div id="cara-derecha" class="cara derecha">
+            <div class="punto centro" id="derecha-p1"></div>
+            <div class="punto esquina superior-izquierda" id="derecha-p2"></div>
+            <div class="punto esquina superior-derecha" id="derecha-p3"></div>
+            <div class="punto esquina inferior-izquierda" id="derecha-p4"></div>
+            <div class="punto esquina inferior-derecha" id="derecha-p5"></div>
+        </div>
+    
+        <!-- Cara superior -->
+        <div id="cara-arriba" class="cara arriba">
+            <div class="punto centro" id="arriba-p1"></div>
+            <div class="punto esquina superior-izquierda" id="arriba-p2"></div>
+            <div class="punto esquina superior-derecha" id="arriba-p3"></div>
+            <div class="punto esquina inferior-izquierda" id="arriba-p4"></div>
+            <div class="punto esquina inferior-derecha" id="arriba-p5"></div>
+        </div>
+    
+        <!-- Cara inferior -->
+        <div id="cara-abajo" class="cara abajo">
+            <div class="punto centro" id="abajo-p1"></div>
+            <div class="punto esquina superior-izquierda" id="abajo-p2"></div>
+            <div class="punto esquina superior-derecha" id="abajo-p3"></div>
+            <div class="punto esquina inferior-izquierda" id="abajo-p4"></div>
+            <div class="punto esquina inferior-derecha" id="abajo-p5"></div>
+        </div>
+    </div>
+
     <div class="row justify-content-center mt-4">
         <div class="col-md-4">
             <label for="cantidad" class="form-label">Cantidad de Dados:</label>
@@ -37,7 +95,15 @@
     </div>
 
     <h2 class="mt-4">Resultados:</h2>
-    <div id="resultados" class="alert alert-info mt-2"></div>
-
+    <div id="resultados" class="alert alert-info mt-2"></div> 
+    
+    <script>
+        document.getElementById("cantidad").addEventListener("input", function () {
+        if (this.value < 1) {
+            this.value = 1;
+        }
+    });
+    </script>
+    
 </body>
 </html>
