@@ -24,10 +24,17 @@ def index():
     return render_template('index.html')
 
 @app.route('/lanzar/<int:cantidad>/<int:caras>')
+@app.route('/lanzar/<int:cantidad>/<int:caras>')
 def lanzar(cantidad, caras):
     print(f"Solicitud recibida: /lanzar/{cantidad}/{caras}")
+
+    # Validar que los valores sean positivos
+    if cantidad <= 0 or caras <= 0:
+        return jsonify({'error': 'La cantidad de dados y las caras deben ser números positivos mayores a 0'}), 400
+
     resultados = lanzar_dados(cantidad, caras)
     return jsonify({'resultados': resultados})
+
 
 if __name__ == '__main__':
     print("Iniciando servidor Flask...")
