@@ -1,72 +1,50 @@
 function lanzarDados() {
-    const cantidad = document.getElementById("cantidad").value;
-    const caras = document.getElementById("caras").value;
-    let resultados = [];
-
-    // Obtener el elemento del dado
     const dado = document.querySelector(".dado-3d");
 
-    // Remover la clase de animación si ya está presente
+    // Reiniciar animación
     dado.classList.remove("animar-giro");
+    requestAnimationFrame(() => dado.classList.add("animar-giro"));
 
-    // Forzar un reflow para reiniciar la animación
-    void dado.offsetWidth;
-
-    // Agregar la clase de animación
-    dado.classList.add("animar-giro");
-
-    // Generar resultados aleatorios
-    for (let i = 0; i < cantidad; i++) {
-        const resultado = Math.floor(Math.random() * caras) + 1;
-        resultados.push(resultado);
-    }
-
-    // Mostrar los puntos correspondientes al resultado en todas las caras
+    // Generar número aleatorio (1-6)
     setTimeout(() => {
-        const carasDado = ["frente", "atras", "izquierda", "derecha", "arriba", "abajo"];
+        const resultado = Math.floor(Math.random() * 6) + 1;
 
-        carasDado.forEach((cara) => {
-            const puntos = document.querySelectorAll(`#cara-${cara} .punto`);
-            puntos.forEach(punto => punto.classList.remove("mostrar-punto")); // Ocultar todos los puntos
+        // Determinar valores de cada cara
+        const valoresCaras = {
+            frente: resultado,
+            atras: 7 - resultado, // Cara opuesta
+            izquierda: resultado === 1 ? 3 : (resultado === 6 ? 4 : 2),
+            derecha: 7 - (resultado === 1 ? 3 : (resultado === 6 ? 4 : 2)), // Opuesta de izquierda
+            arriba: resultado === 1 ? 5 : (resultado === 6 ? 2 : 4),
+            abajo: 7 - (resultado === 1 ? 5 : (resultado === 6 ? 2 : 4)) // Opuesta de arriba
+        };
 
-            switch (resultados[0]) {
-                case 1:
-                    document.getElementById(`${cara}-p1`).classList.add("mostrar-punto");
-                    break;
-                case 2:
-                    document.getElementById(`${cara}-p2`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p5`).classList.add("mostrar-punto");
-                    break;
-                case 3:
-                    document.getElementById(`${cara}-p1`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p2`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p5`).classList.add("mostrar-punto");
-                    break;
-                case 4:
-                    document.getElementById(`${cara}-p2`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p3`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p4`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p5`).classList.add("mostrar-punto");
-                    break;
-                case 5:
-                    document.getElementById(`${cara}-p1`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p2`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p3`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p4`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p5`).classList.add("mostrar-punto");
-                    break;
-                case 6:
-                    document.getElementById(`${cara}-p2`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p3`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p4`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p5`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p6`).classList.add("mostrar-punto");
-                    document.getElementById(`${cara}-p7`).classList.add("mostrar-punto");
-                    break;
-            }
-        });
+        actualizarCarasDado(valoresCaras);
 
-        // Mostrar los resultados en la sección de resultados
-        document.getElementById("resultados").innerText = resultados.join(", ");
-    }, 1000); // Esperar 1 segundo (duración de la animación)
+        // Mostrar el resultado en pantalla
+        document.getElementById("resultados").innerText = `Dado: ${resultado}`;
+    }, 1000);
+}
+
+function actualizarCarasDado(valoresCaras) {
+    const carasDado = ["frente", "atras", "izquierda", "derecha", "arriba", "abajo"];
+
+    const configuracionesPuntos = {
+        1: ["p1"],
+        2: ["p2", "p5"],
+        3: ["p1", "p2", "p5"],
+        4: ["p2", "p3", "p4", "p5"],
+        5: ["p1", "p2", "p3", "p4", "p5"],
+        6: ["p2", "p3", "p4", "p5", "p6", "p7"]
+    };
+
+    carasDado.forEach(cara => {
+        document.querySelectorAll(`#cara-${cara} .punto`).forEach(punto => 
+            punto.classList.remove("mostrar-punto")
+        );
+
+        configuracionesPuntos[valoresCaras[cara]].forEach(puntoId => 
+            document.getElementById(`${cara}-${puntoId}`).classList.add("mostrar-punto")
+        );
+    });
 }
