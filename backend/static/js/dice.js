@@ -1,73 +1,42 @@
 function lanzarDados() {
-    let cantidad = document.getElementById("cantidad").value;
+    let cantidad = parseInt(document.getElementById("cantidad").value);
     let resultadosDiv = document.getElementById("resultados");
-    resultadosDiv.innerHTML = ""; // Limpiar resultados anteriores
-
-    cantidad = parseInt(cantidad);
-
-    if (cantidad < 1) {
-        alert("⚠️ La cantidad de dados debe ser al menos 1.");
-        return;
-    }
+    resultadosDiv.innerHTML = "";
 
     for (let i = 0; i < cantidad; i++) {
         let valorDado = Math.floor(Math.random() * 6) + 1;
+
         let dado = document.createElement("div");
         dado.classList.add("dado");
 
-        let puntos = document.createElement("div");
-        puntos.classList.add("puntos");
+        let dadoInner = document.createElement("div");
+        dadoInner.classList.add("dado-inner");
 
-        // Crear los 9 puntos posibles
-        for (let j = 1; j <= 9; j++) {
-            let punto = document.createElement("div");
-            punto.classList.add("punto", `punto-${j}`);
-            puntos.appendChild(punto);
+        for (let j = 1; j <= 6; j++) {
+            let cara = document.createElement("div");
+            cara.classList.add("cara", `cara-${j}`);
+            cara.textContent = j; // Añade el número de la cara
+            dadoInner.appendChild(cara);
         }
 
-        // Ocultar todos los puntos primero
-        puntos.querySelectorAll(".punto").forEach(punto => {
-            punto.style.opacity = "0";
-        });
+        // Agrega una rotación aleatoria antes de caer en la posición final
+        dadoInner.style.transform = `rotateX(${Math.random() * 720}deg) rotateY(${Math.random() * 720}deg)`;
 
-        // Mostrar solo los puntos correctos según el número obtenido
-        switch (valorDado) {
-            case 1:
-                puntos.querySelector(".punto-1").style.opacity = "1"; // Punto central
-                break;
-            case 2:
-                puntos.querySelector(".punto-2").style.opacity = "1"; // Superior izquierdo
-                puntos.querySelector(".punto-3").style.opacity = "1"; // Superior derecho
-                break;
-            case 3:
-                puntos.querySelector(".punto-2").style.opacity = "1"; // Superior izquierdo
-                puntos.querySelector(".punto-1").style.opacity = "1"; // Central
-                puntos.querySelector(".punto-3").style.opacity = "1"; // Superior derecho
-                break;
-            case 4:
-                puntos.querySelector(".punto-2").style.opacity = "1"; // Superior izquierdo
-                puntos.querySelector(".punto-3").style.opacity = "1"; // Superior derecho
-                puntos.querySelector(".punto-4").style.opacity = "1"; // Inferior izquierdo
-                puntos.querySelector(".punto-5").style.opacity = "1"; // Inferior derecho
-                break;
-            case 5:
-                puntos.querySelector(".punto-2").style.opacity = "1"; // Superior izquierdo
-                puntos.querySelector(".punto-3").style.opacity = "1"; // Superior derecho
-                puntos.querySelector(".punto-4").style.opacity = "1"; // Inferior izquierdo
-                puntos.querySelector(".punto-5").style.opacity = "1"; // Inferior derecho
-                puntos.querySelector(".punto-1").style.opacity = "1"; // Central
-                break;
-            case 6:
-                puntos.querySelector(".punto-2").style.opacity = "1"; // Superior izquierdo
-                puntos.querySelector(".punto-3").style.opacity = "1"; // Superior derecho
-                puntos.querySelector(".punto-4").style.opacity = "1"; // Inferior izquierdo
-                puntos.querySelector(".punto-5").style.opacity = "1"; // Inferior derecho
-                puntos.querySelector(".punto-8").style.opacity = "1"; // Medio izquierdo
-                puntos.querySelector(".punto-9").style.opacity = "1"; // Medio derecho
-                break;
-        }
+        setTimeout(() => {
+            let rotaciones = {
+                1: "rotateX(0deg) rotateY(0deg)",
+                2: "rotateY(-90deg)",
+                3: "rotateY(180deg)",
+                4: "rotateY(90deg)",
+                5: "rotateX(90deg)",
+                6: "rotateX(-90deg)"
+            };
 
-        dado.appendChild(puntos);
+            dadoInner.style.transition = "transform 1s ease-in-out";
+            dadoInner.style.transform = rotaciones[valorDado];
+        }, 200);
+
+        dado.appendChild(dadoInner);
         resultadosDiv.appendChild(dado);
     }
 }

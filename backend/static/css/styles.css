@@ -1,133 +1,91 @@
-/* Fondo de la página con imagen */
+/* Fondo e interfaz */
 body {
-    background: url('../images/photo-1596838132731-3301c3fd4317.jpeg') no-repeat center center fixed; 
-    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
-    background-position: center; /* Asegura que la imagen esté centrada */
-    background-attachment: fixed; /* Fija la imagen de fondo al desplazarse */
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Centra el contenido vertical y horizontalmente */
+    background: url('../images/photo-1596838132731-3301c3fd4317.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Rye', cursive;
+    text-align: center;
+    color: white;
 }
 
-/* Estilos generales para el contenedor */
 .container-box {
-    border: 5px solid #000000;
-    padding: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo negro con transparencia para que se vea la imagen */
-    color: #ffffff; /* Color del texto blanco */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 600px;
-    text-align: center; /* Asegura que todo el texto esté centrado */
+    display: inline-block;
+    border: 3px solid white;
+    margin-top: 20px;
 }
 
-h1 {
-    font-family: 'Casino', sans-serif; /* Asegúrate de que la fuente esté cargada */
-    font-size: 72px;
-    background: linear-gradient(135deg, #da0754, #f1f1f1);
-    -webkit-background-clip: text; /* Prefijo para navegadores WebKit (Chrome, Safari) */
-    background-clip: text; /* Propiedad estándar */
-    color: transparent; /* Hace que el texto sea transparente para mostrar el degradado */
-    padding: 0px;
-    border-radius: 15px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    white-space: nowrap;
-    animation: roll 10s linear infinite, float 2s ease-in-out infinite;
+/* Animación del título */
+.text-first {
+    font-size: 50px;
+    color: #ff3385;
+    text-shadow: 3px 3px 10px black;
+    animation: textGlow 1.5s infinite alternate;
 }
 
-
-/* Efecto roll (desplazamiento de lado a lado) */
-@keyframes roll {
-    0% {
-        transform: translateX(100%);
-    }
-    50% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
+@keyframes textGlow {
+    0% { text-shadow: 3px 3px 10px black; }
+    100% { text-shadow: 5px 5px 15px white; }
 }
 
-/* Efecto flotante (arriba y abajo) */
-@keyframes float {
-    0% {
-        transform: translateY(-20px);
-    }
-    50% {
-        transform: translateY(20px);
-    }
-    100% {
-        transform: translateY(-20px);
-    }
-}
-@font-face {
-    font-family: 'Casino';
-    src: url('../fonts/CasinoFlatShadow-Italic.ttf') format('truetype'); 
-    font-weight: normal;
-    font-style: normal;
-}
+/* Botones */
 .btn-custom {
-    font-size: 18px;
-    font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: 0.3s;
+    border-radius: 5px;
 }
 
 .btn-custom:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Resultados */
 .result-box {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 10px;
 }
 
-/* Estilo de los dados */
+/* Estilo del dado */
 .dado {
     width: 80px;
     height: 80px;
-    background-color: rgba(255, 255, 255, 0.973);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    perspective: 1000px;
     position: relative;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.puntos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+.dado-inner {
     width: 100%;
     height: 100%;
-    padding: 15px;
+    position: absolute;
+    transform-style: preserve-3d;
+    border-radius: 20px;
+    transition: transform 1s ease-in-out;
 }
 
-.punto {
-    width: 15px;
-    height: 15px;
-    background-color: black;
-    border-radius: 50%;
-    opacity: 0;
+/* Caras del dado */
+.cara {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid black;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
 }
 
-.punto-1 { grid-row: 2; grid-column: 2; opacity: 1; }
-.punto-2 { grid-row: 1; grid-column: 1; }
-.punto-3 { grid-row: 3; grid-column: 3; }
-.punto-4 { grid-row: 1; grid-column: 3; }
-.punto-5 { grid-row: 3; grid-column: 1; }
-.punto-6 { grid-row: 1; grid-column: 2; }
-.punto-7 { grid-row: 3; grid-column: 2; }
-.punto-8 { grid-row: 2; grid-column: 1; }
-.punto-9 { grid-row: 2; grid-column: 3; }
+/* Posiciones de las caras */
+.cara-1 { transform: rotateY(0deg) translateZ(40px); }
+.cara-2 { transform: rotateY(-90deg) translateZ(40px); }
+.cara-3 { transform: rotateY(180deg) translateZ(40px); }
+.cara-4 { transform: rotateY(90deg) translateZ(40px); }
+.cara-5 { transform: rotateX(90deg) translateZ(40px); }
+.cara-6 { transform: rotateX(-90deg) translateZ(40px); }
