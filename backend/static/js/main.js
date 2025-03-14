@@ -1,5 +1,6 @@
 function lanzarDados() {
     const dado = document.querySelector(".dado-3d");
+    
 
     // Reiniciar animación
     dado.classList.remove("animar-giro");

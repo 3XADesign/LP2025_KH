@@ -25,7 +25,6 @@
 }
 
 
-
 /* Ocultar todos los puntos por defecto */
 .punto {
     display: none;
@@ -125,3 +124,4 @@
 .animar-giro {
     animation: girar 1s ease-out;
 }
+
