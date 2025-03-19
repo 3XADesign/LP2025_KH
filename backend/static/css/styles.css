@@ -8,7 +8,15 @@ body {
     margin: 0;
     padding: 0;
 }
-
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
 .container-box {
     background: rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -19,7 +27,16 @@ body {
     width: 90%;
     max-width: 600px;
 }
-
+.instrucciones {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    border: 3px solid white;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 600px;
+}
 /* Animación del título */
 .text-first {
     font-size: 50px;
@@ -30,7 +47,7 @@ body {
 
 @keyframes textGlow {
     0% { text-shadow: 3px 3px 10px black; }
-    100% { text-shadow: 5px 5px 15px white; }
+    100% { text-shadow: 5px 5px 15px rgb(0, 0, 0); }
 }
 
 /* Botones */

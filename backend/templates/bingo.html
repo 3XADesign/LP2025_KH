@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo de Números Aleatorios</title>
     <link rel="icon" href="../static/images/favicon-16x16.png">
@@ -9,11 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<div class="contenedor">
     <div class="game-container">
         <h1>Bingo de Números Aleatorios</h1>
         <p id="status">¡Haz tu movimiento!</p>
-        <div id="turn-indicator"></div>
+        <div style="color: aliceblue;" id="turn-indicator"></div>
     
         <div id="player-boards" class="player-board"></div>
     
@@ -21,9 +22,22 @@
         <button id="nuevo-juego" style="display: none;">Nuevo Juego</button>
         <div id="resultado"></div>
         <div id="dado-display"></div> <!-- Aquí se mostrarán los dados visuales -->
-    </div>
-    
 
+    </div>
+    <div class="instructions">
+        <h2>🎲 Instrucciones del Juego:</h2>
+        <ul>Haz clic en "Generar Número" para lanzar los dados y obtener dos números aleatorios entre 1 y 12. ✨ ¡A jugar!</ul>
+        <ul>Los números generados se sumarán. Si la suma coincide con un número de tu tablero, se marcará esa casilla. ✅ Marca las casillas correctas.</ul>
+        <ul>Objetivo: Marcar todos los números de tu tablero antes que los demás jugadores. 🏆 ¡Que gane el mejor!</ul>
+        <ul>Cada jugador tiene un número limitado de intentos.⏳ ¡Apura tu turno!</ul>
+        <ul>Para que salga el 1, primero debe salir el 2, y si vuelve a salir el 2 en tu turno, se marcará el 1.🔄 ¡Estrategia a la vista!</ul>
+        <ul>¡Buena suerte y que gane el mejor!</ul>
+    </div>
+    <div class="mt-4">
+            <a href="{{ url_for('index') }}" id="btn-generar-numero" >Simulador de dados</a>
+            <a href="{{ url_for('blackjack') }}" id="btn-generar-numero" >BlackJack</a>
+    </div>
+</div>
     <script src="{{ url_for('static', filename='js/bingo.js') }}"></script>
 </body>
 </html>

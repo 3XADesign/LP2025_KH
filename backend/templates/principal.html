@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/images/favicon-16x163.png">
+    <title>Juegos de Casino</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/principal.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="header-content">
+        <img src="../static/images/DALL·E 2025-03-19 09.46.14 - A sleek and modern logo design featuring the text 'Casino Dice' in bold, stylish typography. The colors used are purple and white, with a glossy and s.webp" alt="Logo del Casino">
+        <h1 class="main-title">CASINO DICE</h1>
+</div>
+<!-- Fondo de bienvenida con gradiente 
+<div class="background">
+    <h1 class="main-title">CASINO DICE</h1>
+    <h2>¡Elige tu juego y comienza a divertirte!</h2>
+</div>
+-->
+<!-- Contenedor principal de los juegos -->
+<div class="container">
+    <!-- Simulador de Dados -->
+    <div id="dados" class="game-section">
+        <h2>Simulador de Dados</h2>
+        <p>¡Lanza los dados y ve qué números obtienes! ¿Te acompañará la suerte?</p>
+        <a href="{{ url_for('index')}}" class="game-button">Jugar al Simulador de Dados</a>
+    </div>
+
+    <!-- Bingo -->
+    <div id="bingo" class="game-section">
+        <h2>Bingo</h2>
+        <p>¡Suma los números y marca en tu cartón! ¡Es momento de ganar!</p>
+        <a  href="{{ url_for('bingo') }}" class="game-button">Jugar al Bingo</a>
+    </div>
+
+    <!-- Blackjack -->
+    <div id="blackjack" class="game-section">
+        <h2>Blackjack</h2>
+        <p>¡Desafía al crupier y gana la mano! ¿Serás el rey del 21?</p>
+        <a href="{{ url_for('blackjack') }}" class="game-button">Jugar al Blackjack</a>
+    </div>
+</div>
+
+<!-- Footer con un enlace de contacto o más información -->
+<footer>
+    <p>© 2025 Juegos de Casino. Todos los derechos reservados. | <a href="#">Contáctanos</a></p>
+</footer>
+
+</body>
+</html>

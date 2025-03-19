@@ -1,44 +1,78 @@
 body {
-    background: url('../images/apps.34080.13510798887528624.ea88a7e6-557c-4ad5-99d7-c574f430c827.jpg') no-repeat center center fixed;
+    align-items: center;
+    padding-top: 0;
+    background-color: #16213e;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f0f0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
     height: 100vh;
     margin: 0;
     flex-direction: column;
+    transform-origin: top center;
 }
-h1{
+@media (max-width: 600px) {
+    .turno {
+        font-size: 16px; /* Reduce el tamaño en pantallas pequeñas */
+        padding: 8px;
+    }
+}
+@media (max-width: 600px) {
+    .board {
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    }
+
+    .cell {
+    font-size: 14px;
+    height: 50px;
+    }
+}
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    margin-top: 20px;
+    padding-top: 10px;
+    text-align: center;
     font-size: 50px;
     color: #ff3385;
     text-shadow: 3px 3px 10px black;
     animation: textGlow 1.5s infinite alternate;
 }
+
 @keyframes textGlow {
     0% { text-shadow: 3px 3px 10px black; }
-    100% { text-shadow: 5px 5px 15px rgba(255, 255, 255, 0.466); }
+    100% { text-shadow: 5px 5px 15px rgb(0, 0, 0); }
 }
 
-p{
-    font-size: 40px;
+p {
+    font-size: 24px;
     color: #ffffff;
-    text-shadow: 3px 3px 10px rgb(253, 253, 253);
+    text-shadow: 3px 3px 10px black;
     animation: textGlow 1.5s infinite alternate;
 }
+
 .game-container {
     text-align: center;
-    background: rgba(0, 0, 0, 0.596);
+    background: rgb(0, 0, 0, 0.3);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.8);
-    width: 80%;
-    max-width: 900px;
+    box-shadow: 0px 4px 6px #ff3385;
+    width: 100%;
+    max-width: 800px;
 }
+
 .board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -46,31 +80,45 @@ p{
     margin-top: 20px;
     justify-items: center;
 }
+
 .cell {
     width: 60px;
     height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #ffffff;
+    border: 2px solid #ff3385;
     border-radius: 10px;
     cursor: pointer;
     font-size: 18px;
     background-color: #f9f9f9;
     transition: background-color 0.3s ease;
 }
+
 .marked {
     background-color: #4CAF50;
     color: white;
     pointer-events: none;
 }
+
 button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #ff3385;
+    color: white;
+    margin-top: 20px;
+}
+a{
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff3385;
     color: white;
     margin-top: 20px;
 }
@@ -86,7 +134,7 @@ button:hover {
     width: 100%;
 }
 .player {
-    border: 2px solid #4CAF50;
+    border: 2px solid #ff3385;
     padding: 10px;
     border-radius: 10px;
     width: 45%;
@@ -120,6 +168,15 @@ button:hover {
 }
 .victoria {
     background: linear-gradient(135deg, #28a745, #218838);
+}
+.instructions {
+    background: rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 4px 15px #ff3385;
 }
 
 .dado {
