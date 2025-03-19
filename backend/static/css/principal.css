@@ -1,0 +1,165 @@
+ /* Estilos globales */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* Fondo principal con un gradiente sofisticado */
+.header-content {
+    background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    position: relative;
+}
+/* Contenedor para el logo y el título */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.header-content img {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 345px; /* Ajusta el tamaño según lo necesites */
+    height: auto;
+}
+/* Animación del título */
+.main-title {
+    font-size: 150px;
+    color: #ffffff;
+    text-shadow: 3px 3px 10px black;
+    animation: textGlow 1.5s infinite alternate;
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 3px 3px 10px black; }
+    100% { text-shadow: 5px 5px 15px rgb(250, 0, 229); }
+}
+
+/* Título principal centrado */
+.main-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 155px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Contenedor principal de los juegos */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding: 80px 20px 30px;
+    margin-top: 30px;
+}
+
+/* Estilo de cada sección de juego */
+.game-section {
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con opacidad */
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+}
+#dados::before{
+    background-image: url('../images/DALL·E\ 2025-03-19\ 09.39.42\ -\ A\ digital\ dice\ simulator\ interface\ with\ a\ modern\ and\ sleek\ design.\ The\ screen\ displays\ a\ realistic\ 3D\ six-sided\ die\ in\ mid-roll\,\ showing\ motion\ blur.\ .webp'); /* Aquí puedes colocar la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9; /* Opacidad de la imagen de fondo */
+    z-index: -1; /* La imagen de fondo está detrás del contenido */
+}
+#bingo::before{
+    background-image: url('../images/apps.34080.13510798887528624.ea88a7e6-557c-4ad5-99d7-c574f430c827.jpg'); /* Aquí puedes colocar la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9; /* Opacidad de la imagen de fondo */
+    z-index: -1; /* La imagen de fondo está detrás del contenido */
+}
+#blackjack::before{
+    background-image: url('../images/DALL·E\ 2025-03-19\ 09.42.07\ -\ A\ digital\ blackjack\ game\ interface\ with\ a\ modern\ and\ sleek\ design.\ The\ screen\ displays\ a\ virtual\ casino\ table\ with\ green\ felt\,\ showing\ a\ player\'s\ hand.webp'); /* Aquí puedes colocar la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9; /* Opacidad de la imagen de fondo */
+    z-index: -1; /* La imagen de fondo está detrás del contenido */
+}
+.game-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.game-section h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #4a148c;
+    text-shadow: #000000;
+    margin-bottom: 20px;
+}
+
+.game-section p {
+    font-size: 18px;
+    color: #000000;
+    text-shadow: #4a148c;
+    margin-bottom: 30px;
+}
+
+.game-button {
+    background-color: #4c0458;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.game-button:hover {
+    background-color: #7b1fa2;
+    transform: scale(1.05);
+}
+
+/* Estilo para los enlaces en la parte inferior */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #212121;
+    color: white;
+}
+
+footer a {
+    color: #ff4081;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

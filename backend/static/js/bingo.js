@@ -1,3 +1,4 @@
+
 let jugadores = [];
     let turnoJugador = 0;
     let gameOver = false;

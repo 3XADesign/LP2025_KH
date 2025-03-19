@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="contenedor">
     <div class="container-box mx-auto">
         <h1 class="text-first"><strong>Rolls & Win</strong></h1>
         <h2 class="text-primary">🎲 Simulador de Dados 🎲</h2>
@@ -44,11 +45,22 @@
         <h2 class="mt-4">Resultados:</h2>
         <div id="resultados" class="result-box"></div>
 
-        <!-- Enlace al Bingo -->
-        <div class="mt-4">
-            <a href="{{ url_for('bingo') }}" class="btn btn-primary btn-lg btn-custom">Jugar al Bingo</a>        </div>
-    </div>
 
+
+    </div>
+    <div class="instrucciones">
+    <h2>Instrucciones</h2>
+    <ul>1️⃣ Selecciona cuántos dados quieres lanzar (mínimo 1, máximo 10).</ul>
+    <ul>2️⃣ Presiona el botón “Lanzar Dados” para ver los resultados.</ul>
+    <ul>3️⃣ Los valores de los dados se generarán aleatoriamente entre 1 y 6.</ul>
+    <ul>4️⃣ Observa los resultados en la pantalla: Se mostrarán imágenes representando los valores obtenidos.</ul>
+    <ul>5️⃣ Puedes volver a lanzar los dados cuantas veces quieras.</ul>
+    </div>        <!-- Enlace al Bingo -->
+    <div class="mt-4">
+            <a href="{{ url_for('bingo') }}" class="btn btn-primary btn-lg btn-custom">Jugar al Bingo</a>        
+            <a href="{{ url_for('blackjack') }}" class="btn btn-primary btn-lg btn-custom">Jugar BlackJack</a>
+    </div>
+</div>
     <script src="{{ url_for('static', filename='js/dice.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/storage.js') }}"></script>
