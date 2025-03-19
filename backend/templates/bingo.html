@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo de Números Aleatorios</title>
+    <link rel="icon" href="../static/images/favicon-16x16.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bingo.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Bingo de Números Aleatorios</h1>
+        <p id="status">¡Haz tu movimiento!</p>
+        <div id="turn-indicator"></div>
+    
+        <div id="player-boards" class="player-board"></div>
+    
+        <button id="btn-generar-numero">Generar Número</button>
+        <button id="nuevo-juego" style="display: none;">Nuevo Juego</button>
+        <div id="resultado"></div>
+        <div id="dado-display"></div> <!-- Aquí se mostrarán los dados visuales -->
+    </div>
+    
+
+    <script src="{{ url_for('static', filename='js/bingo.js') }}"></script>
+</body>
+</html>
